@@ -90,6 +90,16 @@ var routes = function (Book) {
                 }
             });
         })
+        .delete(function(req, res) {
+            req.book.remove(function(err){
+                if (err) {
+                    res.status(500).send(err);
+                }
+                else {
+                    res.status(204).send('Book removed');
+                }
+            });
+        })
         ;
     return bookrouter;
 };
